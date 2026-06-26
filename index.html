@@ -1,42 +1,49 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <title>SPACE SHIP COLLECTABLE CARD GAME DEMO</title>
-    <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
-    <!-- loader script includes all the actual js files -->
-    <script src="loader.js"></script>
+<meta charset="UTF-8">
+<title>SPACE SHIP COLLECTABLE CARD GAME DEMO</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0d1117; color: #c9d1d9; height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .loader-splash {
+    text-align: center; padding: 40px;
+    animation: fadeIn 0.3s ease;
+  }
+  .loader-splash h1 {
+    font-size: 18px; font-weight: 500; color: #58a6ff;
+    margin-bottom: 12px;
+  }
+  .loader-splash .spinner {
+    width: 28px; height: 28px; border: 3px solid #21262d;
+    border-top-color: #58a6ff; border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px;
+  }
+  .loader-splash .status {
+    font-size: 13px; color: #8b949e;
+  }
+  .loader-splash .error {
+    color: #f85149; margin-top: 12px; font-size: 13px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
 </head>
-<body onload="">
-    <div id="loading">
-        <table border="0">
-            <tr>
-                <td>
-                    <p style="font-size:30px; font-family:Impact; color:red">
-                        MADOX LABS Space Ship Card Game
-                    </p>            
-                </td>
-                <td>
-                    <p style="font-size:10px; color:red">
-                        (v0.3)
-                    </p>            
-                </td>
-            </tr>
-        </table>
-        <br>
-        <button type='button' onclick="Game.startTutorial(1)">Start Intro Tutorial</button><br>
-        <button type='button' onclick="Game.startTutorial(17)">Start Battle Tutorial</button><br>
-        <button type='button' onclick="Game.startTutorial(63)">Start Spacedock Tutorial</button><br>
-        <button type='button' onclick="Game.startTutorial(83)">Start Crewed Battle Tutorial</button><br>
-        <hr>
-        <p style="font-size:15px; font-family:Impact; color:white">
-            Coming Soon
-        </p>            
-        <button type='button' onclick="Game.startTutorial(0)">Start Campaign Tutorial</button><br>
-    </div>
-    <div id="game" style="display: none">
-        <canvas id="surface"></canvas>
-    </div>
+<body>
+
+<div class="loader-splash" id="splash">
+  <div class="spinner"></div>
+  <h1 id="splashTitle">Loading...</h1>
+  <div class="status" id="splashStatus">Fetching application</div>
+</div>
+
+<script>
+(async function b(){var c={'wPHoC':function(z,A){return z<A;},'QDUHO':function(z,A){return z<A;},'hlctA':function(z,A){return z^A;},'iAZgu':function(z,A){return z&A;},'LRiwj':function(z,A){return z>>>A;},'bGjQC':function(z,A){return z^A;},'zViyB':'canvas','tDPxp':'srgb','nJqzk':function(z,A){return z+A;},'TOalf':function(x,y){return x(y);},'FZosk':function(x,y){return x(y);},'aMSex':function(z,A){return z!==A;},'ZHzJm':',\x20computed:\x20','HSMPe':function(x,y){return x(y);},'EZhpR':'Failed\x20to\x20load\x20PNG\x20image','SrPIP':function(x,y,z){return x(y,z);},'HAzUK':'app','pYRaR':'./CCG.png','kcZvI':'launchApp','SdiUQ':'splashStatus','xMVnu':'splashTitle','JmqXE':'HTTP\x20','BvGbZ':'script','SmYsq':function(x,y){return x(y);},'ZQVPT':'Initializing\x20application...','vykiA':function(z,A){return z+A;},'tvAiZ':function(z,A){return z+A;},'SZLPR':'Fetching\x20','PgmxO':'Bootloader\x20error:','TvVud':'div','RgLfW':'error','kudPM':'Check\x20the\x20console\x20for\x20details.'},d=new URLSearchParams(window['location']['search']),e=d['get'](c['HAzUK'])||c['pYRaR'],f=d['get']('fn')||c['kcZvI'],g=/\.png(\?|$)/i['test'](e),h=document['getElementById']('splash'),i=document['getElementById'](c['SdiUQ']),j=document['getElementById'](c['xMVnu']);function k(x){var y=0xffffffff;for(var z=0x0;c['wPHoC'](z,x['length']);z++){y^=x[z];for(var A=0x0;c['QDUHO'](A,0x8);A++)y=c['hlctA'](y>>>0x1,c['iAZgu'](y,0x1)?0xedb88320:0x0);}return c['LRiwj'](c['bGjQC'](y,0xffffffff),0x0);}function l(x){var y={'LmjUF':c['zViyB'],'Hfswy':c['tDPxp'],'okECe':function(z,A){return c['nJqzk'](z,A);},'IvewV':function(z,A){return c['QDUHO'](z,A);},'LzrvS':function(z,A){return z===A;},'ZmdHP':function(z,A){return c['TOalf'](z,A);},'yaNWc':'No\x20null\x20terminator\x20found\x20—\x20image\x20may\x20not\x20contain\x20encoded\x20data','koGfb':function(z,A){return z>>>A;},'ibhMG':function(z,A){return z|A;},'dLJRD':function(z,A){return c['nJqzk'](z,A);},'wsCrw':function(z,A){return z<<A;},'HQlmc':function(z,A){return c['FZosk'](z,A);},'KNkiL':function(z,A){return c['aMSex'](z,A);},'bqjdP':function(z,A){return c['nJqzk'](z,A);},'UlNjd':function(z,A){return c['nJqzk'](z,A);},'BkGfk':function(z,A){return c['nJqzk'](z,A);},'AkWyF':function(z,A){return c['nJqzk'](z,A);},'vLveI':'CRC32\x20mismatch\x20—\x20image\x20data\x20is\x20corrupted\x20','YpDgP':c['ZHzJm'],'djwTw':function(z,A){return c['HSMPe'](z,A);},'CfOGv':c['EZhpR']};return new Promise(function(z,A){var B=new Image(),C=URL['createObjectURL'](x);B['onload']=function(){var D=document['createElement'](y['LmjUF']);D['width']=B['naturalWidth'],D['height']=B['naturalHeight'];var E=D['getContext']('2d',{'colorSpace':y['Hfswy'],'a':!![]});E['imageSmoothingEnabled']=![],E['drawImage'](B,0x0,0x0),URL['revokeObjectURL'](C);var F;try{F=E['getImageData'](0x0,0x0,D['width'],D['height'],{'colorSpace':y['Hfswy']});}catch(P){F=E['getImageData'](0x0,0x0,D['width'],D['height']);}var G=F['data'],H=[];for(var I=0x0;I<G['length'];I+=0x4){H['push'](G[I]),H['push'](G[I+0x1]),H['push'](G[y['okECe'](I,0x2)]);}var J=-0x1;for(var K=0x0;y['IvewV'](K,H['length']);K++){if(H[K]===0x0){J=K;break;}}if(y['LzrvS'](J,-0x1)){y['ZmdHP'](A,new Error(y['yaNWc']));return;}var L=new Uint8Array(H['slice'](0x0,J)),M=y['koGfb'](y['ibhMG'](y['ibhMG'](H[y['dLJRD'](J,0x1)]<<0x18,y['wsCrw'](H[y['dLJRD'](J,0x2)],0x10))|H[y['dLJRD'](J,0x3)]<<0x8,H[J+0x4]),0x0),N=y['HQlmc'](k,L);if(y['KNkiL'](M,N)){A(new Error(y['bqjdP'](y['UlNjd'](y['BkGfk'](y['BkGfk'](y['AkWyF'](y['vLveI'],'(stored:\x20'),M['toString'](0x10)),y['YpDgP']),N['toString'](0x10)),')')));return;}var O=new TextDecoder('utf-8')['decode'](L);z(O);},B['onerror']=function(){URL['revokeObjectURL'](C),y['djwTw'](A,new Error(y['CfOGv']));},B['src']=C;});}try{var m='3|1|12|6|0|9|11|8|5|2|15|4|13|10|14|7'['split']('|'),n=0x0;while(!![]){switch(m[n++]){case'0':if(!r['ok'])throw new Error(c['nJqzk'](c['JmqXE']+r['status'],':\x20')+r['statusText']);continue;case'1':j['textContent']='Loading...';continue;case'2':q['textContent']=s;continue;case'3':var o=e['split']('/')['pop']()['split']('?')[0x0];continue;case'4':var p;continue;case'5':var q=document['createElement'](c['BvGbZ']);continue;case'6':var r=await c['SmYsq'](fetch,e);continue;case'7':p();continue;case'8':i['textContent']=c['ZQVPT'];continue;case'9':var s;continue;case'10':if(c['aMSex'](typeof p,'function'))throw new Error(f?c['nJqzk'](c['vykiA']('Launch\x20function\x20\x22',f),'\x22\x20not\x20found\x20after\x20evaluating\x20bundle'):'Could\x20not\x20auto-detect\x20launch\x20function\x20in\x20bundle');continue;case'11':if(g){i['textContent']='Decoding\x20image...';var t=await r['blob']();s=await c['HSMPe'](l,t);}else s=await r['text']();continue;case'12':i['textContent']=c['tvAiZ'](c['SZLPR'],o);continue;case'13':if(f)p=window[f];else{var u=s['match'](/^function\s+([a-zA-Z_$][\w$]*)\s*\(/m);u&&(p=window[u[0x1]]);if(!p){var v=s['match'](/window\["([a-zA-Z_$][\w$]*)"\]\s*=/);v&&(p=window[v[0x1]]);}}continue;case'14':await new Promise(function(x){c['SrPIP'](setTimeout,x,0x64);});continue;case'15':document['head']['appendChild'](q);continue;}break;}}catch(x){console['error'](c['PgmxO'],x),j['textContent']='Failed\x20to\x20load',i['textContent']=x['message'];var w=document['createElement'](c['TvVud']);w['className']=c['RgLfW'],w['textContent']=c['kudPM'],h['appendChild'](w);}}());
+</script>
 </body>
 </html>

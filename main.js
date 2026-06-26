@@ -31,7 +31,10 @@ Game.run = function()
 {
     if (!Game.Ready)
     {
-        Game.postInit();
+        if (Game.startingStep !== undefined) 
+        {
+            Game.postInit();
+        }
     }
     else
     {

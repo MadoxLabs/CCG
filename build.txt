@@ -1,0 +1,4 @@
+bundle index.html --raw --out app.raw.js
+npx javascript-obfuscator app.raw.js --output app.obf.js
+bundle index.html --js app.obf.js --out app.bundle.js
+codeimage encode app.bundle.js app.png 

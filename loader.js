@@ -30,8 +30,14 @@ class modeBase
 
 var Game = {};
 
+// @bundle-expand 
+// @bundle-basedir .
+// @bundle-entry main   
+// @bundle-ignore-start  
+
 (function () {
   // These are the source files that need including 
+// @bundle-ignore-end   
   var gameSrc1 = [
                   "cards.js",                 
                  ];
@@ -42,14 +48,17 @@ var Game = {};
                   "tutorial.js",
                  ];
   var gameSrc3 = ["main.js"];
+// @bundle-ignore-start  
   var loadState = 0; // how many files are left to include, so we know when we're done
   var step = 1;
+// @bundle-ignore-end   
 
   Game.startTutorial = function(num)
   {
     Game.startingStep = num;
     Game.loadApp();
   }
+// @bundle-ignore-start  
 
   // the boot up entry point
   Game.loadApp = function ()
@@ -95,6 +104,7 @@ var Game = {};
         main();
     }
   }
+// @bundle-ignore-end
 
   // launch the game using the Game object
   // the game first gets an init pass, then its run loop is started.
@@ -106,5 +116,7 @@ var Game = {};
     console.log("Begin");
     window.requestAnimationFrame(Game.run);
   }
+// @bundle-ignore-start  
 
 })();
+// @bundle-ignore-end
